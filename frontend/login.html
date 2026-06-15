@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1>Welcome Back</h1>
+            <p class="auth-subtitle">Login to your Task Manager</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+
+                <div id="loginMessage" class="message"></div>
+
+                <button type="submit" class="auth-btn">Login</button>
+
+                <p class="auth-link">
+                    Don't have an account? <a href="register.html">Sign up here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000';
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('loginMessage');
+
+            try {
+                const response = await fetch(`${API_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    messageDiv.textContent = data.message || 'Login failed';
+                    messageDiv.className = 'message error';
+                    return;
+                }
+
+                messageDiv.textContent = 'Login successful! Redirecting...';
+                messageDiv.className = 'message success';
+
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('userId', data.userId);
+                localStorage.setItem('username', data.username);
+
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            } catch (err) {
+                messageDiv.textContent = 'Connection error. Make sure server is running.';
+                messageDiv.className = 'message error';
+            }
+        });
+    </script>
+</body>
+</html>
