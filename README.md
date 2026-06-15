@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Task Manager - Full Stack Application
 
 A modern, full-stack task management application built with Node.js, Express, SQLite, and vanilla JavaScript.
@@ -242,3 +243,7 @@ For issues and questions, please check:
 ---
 
 **Enjoy managing your tasks!** 📋✨
+=======
+# Task-Manager-Application
+Task Manager is a full-stack web application that helps users organize and manage their daily tasks efficiently. Built with React.js, Flask, and MongoDB, it provides features such as user authentication, task creation, editing, deletion, and status tracking through a responsive and user-friendly interface.
+>>>>>>> aa143f6dbb6203c86ed86113e10218998cf69a26
