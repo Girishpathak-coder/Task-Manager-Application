@@ -245,5 +245,5 @@ For issues and questions, please check:
 **Enjoy managing your tasks!** 📋✨
 =======
 # Task-Manager-Application
-Task Manager is a full-stack web application that helps users organize and manage their daily tasks efficiently. Built with React.js, Backend, and MongoDB, it provides features such as user authentication, task creation, editing, deletion, and status tracking through a responsive and user-friendly interface.
+I developed a Task Management Application. For the backend, I used Node.js with Express.js to create REST APIs. Express.js helped me handle routing and HTTP requests efficiently. I used SQLite as the database to store task information, and the frontend was built using HTML, CSS, and JavaScript. Through this project, I learned how frontend, backend, and database work together in a full-stack application.
 >>>>>>> aa143f6dbb6203c86ed86113e10218998cf69a26
